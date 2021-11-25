@@ -1,12 +1,14 @@
 
 import streamlit as st
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.decomposition import PCA
 
 st.title("Streamlit example")
 
@@ -85,3 +87,16 @@ st.write(f"accuracy = {acc}")
 
 # --- Plot
 
+pca = PCA(2)
+X_projected = pca.fit_transform(X)
+
+x1 = X_projected[:,0]
+x2 = X_projected[:,1]
+
+fig = plt.figure()
+plt.scatter(x1,x2,c=y, alpha= 0.8, cmap = "viridis")
+plt.xlabel("Prinicipal Component 1")
+plt.ylabel("Principal Component 2")
+plt.colorbar()
+st.set_option('deprecation.showPyplotGlobalUse', False)
+st.pyplot()
