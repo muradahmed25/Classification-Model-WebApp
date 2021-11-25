@@ -49,7 +49,7 @@ def add_parameter_ui(clf_name):
         n_estimators = st.sidebar.slider("n_estimators",1,100)
         params["max_depth"]= max_depth
         params["n_estimators"] = n_estimators
-        return params
+    return params
 
 
 params = add_parameter_ui(classifier_name)
